@@ -34,15 +34,15 @@ Stage 1:
         +---+---+---+---+---+---+---+---+---+---+
         |   |   |   |   |   | A |   |   |   |   | E
         +---+---+---+---+---+---+---+---+---+---+
-        |   |   | x |   |   | x |   |   |   |   | F
+        |   |   | x |   |   | x |   | A |   |   | F
         +---+---+---+---+---+---+---+---+---+---+
-        |   |   | H |   |   | H |   |   |   |   | G
+        |   |   | H |   |   | H |   | 0 |   |   | G
         +---+---+---+---+---+---+---+---+---+---+
-        | x |   | V |   |   | V |   |   |   |   | H
+        | x |   | V |   |   | V |   | V |   |   | H
         +---+---+---+---+---+---+---+---+---+---+
         | V |   |   |   | ¤ |   |   |   |   |   | I
         +---+---+---+---+---+---+---+---+---+---+
-        |   |   |   |   |   |   |   |   |   |   | J
+        |   |   |   |   |   |   | < | 0 | > |   | J
         +---+---+---+---+---+---+---+---+---+---+
 
     - Board2:
@@ -53,11 +53,11 @@ Stage 1:
          A  .  A  .  o  o  .  o  .  . |C
          H  .  V  .  .  .  <  x  >  . |D
          H  .  .  ¤  .  .  .  .  .  . |E
-         V  .  .  .  A  .  x  .  .  . |F
-         .  .  O  .  x  .  x  .  .  . |G
-         .  .  .  .  V  .  H  .  .  . |H
-         .  .  .  O  .  .  V  .  .  . |I
-         .  .  .  .  .  .  .  .  .  . |J
+         V  .  .  .  A  .  x  .  A  . |F
+         .  .  O  .  x  .  x  .  0  . |G
+         .  .  .  .  V  .  H  .  0  . |H
+         .  .  .  O  .  .  V  .  V  . |I
+         .  .  .  .  .  .  <  0  >  . |J
 
      - Board3:
           0   1   2   3   4   5   6   7   8   9
@@ -74,13 +74,13 @@ Stage 1:
         +   +   +   +   +   +   +   +   +   +   +
           H           ¤   A       x             | F
         +   +   +   +   +   +   +   +   +   +   +
-          V               x       H             | G
+          V               x       H       A     | G
         +   +   +   +   +   +   +   +   +   +   +
-                          V       V             | H
+                          V       V       0     | H
         +   +   +   +   +   +   +   +   +   +   +
-                                                | I
+                                          0     | I
         +   +   +   +   +   +   +   +   +   +   +
-                                                | J
+                      <   0   >           V     | J
         +   +   +   +   +   +   +   +   +   +   +
 
     - Board4:
@@ -98,13 +98,13 @@ Stage 1:
                                                 |
           H   .   .   .   H   .   H   .   .   . | F
                                                 |
-          V   .   o   .   V   .   V   .   .   . | G
+          V   .   o   .   V   .   V   .   A   . | G
                                                 |
-          ¤   .   o   .   .   .   .   .   .   . | H
+          ¤   .   o   .   .   .   .   .   0   . | H
                                                 |
-          .   .   .   .   ¤   .   .   .   .   . | I
+          .   .   .   .   ¤   .   .   .   V   . | I
                                                 |
-          .   .   .   .   .   .   .   .   .   . | J
+          .   .   .   <   0   >   .   .   .   . | J
                                                 |
 
         -Board5:
@@ -114,20 +114,63 @@ Stage 1:
         | H |   |   | < | x | > |   |   |   |   | C
         | V |   |   |   |   |   |   | x | > |   | D
         |   |   |   |   |   | A |   |   |   |   | E
-        |   |   | x |   |   | x |   |   |   |   | F
-        |   |   | H |   |   | H |   |   |   |   | G
-        | x |   | V |   |   | V |   |   |   |   | H
-        | V |   |   |   | ¤ |   |   |   |   |   | I
-        |   |   |   |   |   |   |   |   |   |   | J
+        |   |   | x |   |   | x |   |   | A |   | F
+        |   |   | H |   |   | H |   |   | 0 |   | G
+        | x |   | V |   |   | V |   |   | 0 |   | H
+        | V |   |   |   | ¤ |   |   |   | V |   | I
+        |   |   |   |   |   | < | 0 | > |   |   | J
 
     - Opcionális:
         új fegyver:
-            - Akna: ¤ (3 db)
+            - Akna: ¤ (3 db) ha az ellenség eltalálja, akkor az ő térfelén is robban
             - Torpedó: egy sorban elindul, és addig megy amíg el nem talál valamit
-            - Légi bombázás: 5 random találat
-            - Felderítő drón: megmutat egy 3x3-as területet
+                    - level 1: (8 gold/shot) 1 kockát robbant, next level cost: 8 gold
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 + 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    - level 2: (12 gold/shot) kereszt alakban robbant, next level cost: 12 gold
+                    0 0 0 0 0
+                    0 0 + 0 0
+                    0 + + + 0
+                    0 0 + 0 0
+                    0 0 0 0 0
+                    - level 3: (16 gold/shot) 3x3-as kockát robbant
+                    0 0 0 0 0
+                    0 + + + 0
+                    0 + + + 0
+                    0 + + + 0
+                    0 0 0 0 0
+            - Légi bombázás: random találat
+                    - level 1:(6 gold/shot) 3 bomba, next level cost: 6 gold
+                    - level 2:(8 gold/shot) 5 bomba, next level cost: 8 gold
+                    - level 3:(10 gold/shot) 7 bomba
+            - Felderítő drón: megmutat egy bizonyos nagyságú területet
+                    - level 1:(6 gold/shot) 5 kocka kereszt alakban derít fel, next level cost: 6 gold
+                    0 0 0 0 0
+                    0 0 + 0 0
+                    0 + + + 0
+                    0 0 + 0 0
+                    0 0 0 0 0
+                    - level 2:(10 gold/shot) 3x3-as kocka alakban derít fel, next level cost: 10 gold
+                    0 0 0 0 0
+                    0 + + + 0
+                    0 + + + 0
+                    0 + + + 0
+                    0 0 0 0 0
+                    - level 3:(14 gold/shot) 2 kocka rangeben derít fel
+                    0 0 + 0 0
+                    0 + + + 0
+                    + + + + +
+                    0 + + + 0
+                    0 0 + 0 0
+
         új szabályok:
-            - háttér falu: pénzt termel
+            - háttér falu: pénzt termel:
+                    - level 1: 1/round, next level cost: 2 gold
+                    - level 2: 2/round, next level cost: 6 gold
+                    - level 3: 4/round
             - lövés pénzbe kerül (1)
             - fegyverek és a falu fejleszthető
 
