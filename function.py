@@ -1,3 +1,7 @@
+import os
+
+def screen_clear():
+    os.system("clear||cls")
 
 def print_menu(menu):
     for element in range(len(menu) - 1):
