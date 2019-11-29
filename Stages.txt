@@ -10,10 +10,10 @@ Stage 1:
         ships in the board:
              0  1  2  3  4  5  6  7  8  9
         -------------------------------
-         A  .  .  .  .  .  .  <  =  > |A
-         H  .  <  =  =  >  .  .  .  . |B
-         H  .  .  .  .  ¤  .  .  .  . |C
-         H  .  <  >  .  .  A  .  A  . |D
+         A  .  .  .  .  .  .  <  0  > |A
+         0  .  <  =  =  >  .  .  .  . |B
+         0  .  .  .  .  ¤  .  .  .  . |C
+         0  .  <  >  .  .  A  .  A  . |D
          V  .  .  .  .  .  H  .  H  . |E
          .  .  A  .  .  .  V  .  H  . |F
          .  .  V  .  A  .  .  .  V  . |G
@@ -59,7 +59,7 @@ Stage 1:
          .  .  .  O  .  .  V  .  V  . |I
          .  .  .  .  .  .  <  0  >  . |J
 
-     - Board3:
+     - Board3:(felbontás miatt kuka)
           0   1   2   3   4   5   6   7   8   9
         +---+---+---+---+---+---+---+---+---+---+
           <   =   >       <   >                 | A
@@ -173,4 +173,5 @@ Stage 1:
                     - level 3: 4/round
             - lövés pénzbe kerül (1)
             - fegyverek és a falu fejleszthető
+
 
